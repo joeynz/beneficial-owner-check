@@ -1,3 +1,5 @@
 import { getAllRegions } from '../utils/yamlLoader';
 
-export const regions = getAllRegions(); 
+export async function getRegions() {
+  return await getAllRegions();
+} 

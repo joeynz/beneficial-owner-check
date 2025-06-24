@@ -6,37 +6,184 @@ businessTypes:
     name: Private Limited Company (Ltd)
     description: A company limited by shares with private ownership
     available: true
+    requirements:
+      directors:
+        required: true
+        description: All directors must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - email_address
+          - home_address
+      owners:
+        required: false
+        description: Owners are not automatically required for Shopify Payments
+        requiredInformation: []
+      beneficialOwners:
+        required: true
+        description: Individuals with 25% or greater ownership must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - email_address
+          - home_address
+          - phone_number
+          - job_title
+      additionalRequirements:
+        - "Shopify Payments KYC compliance"
+        - "UK financial services regulations"
   - code: llc
     name: Limited Liability Partnership (LLP)
     description: A partnership with limited liability for its members
     available: true
+    requirements:
+      directors:
+        required: false
+        description: Directors are not applicable for LLPs
+        requiredInformation: []
+      owners:
+        required: true
+        description: All designated members must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - email_address
+          - home_address
+          - phone_number
+          - job_title
+      beneficialOwners:
+        required: true
+        description: Individuals with 25% or greater ownership must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - email_address
+          - home_address
+          - phone_number
+          - job_title
+      additionalRequirements:
+        - "Shopify Payments KYC compliance"
+        - "UK financial services regulations"
   - code: partnership
     name: General Partnership
     description: A business owned by two or more individuals
     available: true
+    requirements:
+      directors:
+        required: false
+        description: Directors are not applicable for partnerships
+        requiredInformation: []
+      owners:
+        required: true
+        description: All partners must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - email_address
+          - home_address
+          - phone_number
+          - job_title
+      beneficialOwners:
+        required: true
+        description: Individuals with 25% or greater ownership must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - email_address
+          - home_address
+          - phone_number
+          - job_title
+      additionalRequirements:
+        - "Shopify Payments KYC compliance"
+        - "UK financial services regulations"
   - code: sole-proprietorship
     name: Sole Trader
     description: A business owned and operated by one individual
     available: true
+    requirements:
+      directors:
+        required: false
+        description: Directors are not applicable for sole traders
+        requiredInformation: []
+      owners:
+        required: false
+        description: Ownership reporting is not applicable for sole traders
+        requiredInformation: []
+      beneficialOwners:
+        required: false
+        description: Beneficial ownership reporting is not applicable for sole traders
+        requiredInformation: []
+      additionalRequirements:
+        - "Shopify Payments KYC compliance"
+        - "UK financial services regulations"
   - code: plc
     name: Public Limited Company (PLC)
     description: A company that can offer shares to the public
     available: true
+    requirements:
+      directors:
+        required: true
+        description: All directors must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - email_address
+          - home_address
+      owners:
+        required: false
+        description: Owners are not automatically required for Shopify Payments
+        requiredInformation: []
+      beneficialOwners:
+        required: true
+        description: Individuals with 25% or greater ownership must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - email_address
+          - home_address
+          - phone_number
+          - job_title
+      additionalRequirements:
+        - "Shopify Payments KYC compliance"
+        - "UK financial services regulations"
 requirements:
   directors:
     required: true
-    description: All directors must be reported to Companies House
-  shareholders:
+    description: All directors must be provided to Shopify Payments
+    requiredInformation:
+      - first_name
+      - last_name
+      - date_of_birth
+      - email_address
+      - home_address
+  owners:
     required: false
-    description: Shareholders are not automatically required to be reported
+    description: Owners are not automatically required for Shopify Payments
+    requiredInformation: []
   beneficialOwners:
     required: true
-    description: Individuals with 25% or greater ownership must be reported as Persons with Significant Control (PSC)
+    description: Individuals with 25% or greater ownership must be provided to Shopify Payments
+    requiredInformation:
+      - first_name
+      - last_name
+      - date_of_birth
+      - email_address
+      - home_address
+      - phone_number
+      - job_title
   additionalRequirements:
-    - "Companies House PSC register compliance"
-    - "UK Money Laundering Regulations"
-    - "5MLD (Fifth Money Laundering Directive) requirements"
+    - "Shopify Payments KYC compliance"
+    - "UK financial services regulations"
 notes:
-  - "All UK companies must maintain a PSC register and report to Companies House"
-  - "PSC information must be updated within 14 days of any changes"
-  - "Failure to comply can result in criminal penalties and fines" 
+  - "Shopify Payments requires beneficial ownership information for UK merchants"
+  - "25% ownership threshold applies to Shopify Payments compliance"
+  - "All information is used for KYC (Know Your Customer) purposes"
+  - "Failure to provide required information may result in account restrictions" 

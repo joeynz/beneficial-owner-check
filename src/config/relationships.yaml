@@ -1,0 +1,642 @@
+# Relationships Configuration
+# This file defines the relationships between regions, business types, and requirements
+
+# Region-Business Type Relationships
+regionBusinessTypes:
+  US:
+    availableTypes:
+      - corporation
+      - s_corporation
+      - c_corporation
+      - llc
+      - single_member_llc
+      - partnership
+      - limited_partnership
+      - individual
+      - sole_proprietorship
+      - trust
+      - cooperative
+      - nonprofit
+    defaultThreshold: 25
+    notes: "US has the most comprehensive set of business types available"
+
+  CA:
+    availableTypes:
+      - corporation
+      - llc
+      - partnership
+      - individual
+      - trust
+      - cooperative
+      - nonprofit
+    defaultThreshold: 25
+    notes: "Canada has similar business types to US but fewer variations"
+
+  UK:
+    availableTypes:
+      - corporation
+      - llc
+      - partnership
+      - limited_partnership
+      - individual
+      - trust
+      - cooperative
+      - nonprofit
+    defaultThreshold: 25
+    notes: "UK has common law business structures"
+
+  EU:
+    availableTypes:
+      - corporation
+      - llc
+      - partnership
+      - individual
+      - trust
+      - cooperative
+      - nonprofit
+    defaultThreshold: 25
+    notes: "EU has civil law business structures"
+
+  AU:
+    availableTypes:
+      - corporation
+      - llc
+      - partnership
+      - individual
+      - trust
+      - cooperative
+      - nonprofit
+    defaultThreshold: 25
+    notes: "Australia has common law business structures"
+
+  SG:
+    availableTypes:
+      - corporation
+      - llc
+      - partnership
+      - individual
+      - trust
+      - cooperative
+      - nonprofit
+    defaultThreshold: 25
+    notes: "Singapore has comprehensive business structures"
+
+  HK:
+    availableTypes:
+      - corporation
+      - llc
+      - partnership
+      - individual
+      - trust
+      - cooperative
+      - nonprofit
+    defaultThreshold: 25
+    notes: "Hong Kong has common law business structures"
+
+  JP:
+    availableTypes:
+      - corporation
+      - llc
+      - partnership
+      - individual
+      - trust
+      - cooperative
+      - nonprofit
+    defaultThreshold: 25
+    notes: "Japan has civil law business structures"
+
+# Business Type-Requirement Relationships by Region
+businessTypeRequirements:
+  # US Requirements
+  US:
+    corporation:
+      directors:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+        description: "All directors must be provided to Shopify Payments"
+      officers:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+        description: "Officers are optional but have same requirements as directors"
+      secretaries:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+        description: "Secretaries are optional but have same requirements as directors"
+      owners:
+        required: false
+        requiredInformation: []
+        description: "Owners are not automatically required for Shopify Payments"
+      beneficialOwners:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+        description: "Individuals with 25% or greater ownership must be provided to Shopify Payments"
+      representatives:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+        description: "Representatives are optional but have same requirements as beneficial owners"
+        onlyForMainBusiness: true
+      additionalRequirements:
+        - shopify_payments_kyc
+        - financial_services_regulations
+
+    s_corporation:
+      directors:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+        description: "All directors must be provided to Shopify Payments"
+      officers:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+        description: "Officers are optional but have same requirements as directors"
+      secretaries:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+        description: "Secretaries are optional but have same requirements as directors"
+      owners:
+        required: false
+        requiredInformation: []
+        description: "Owners are not automatically required for Shopify Payments"
+      beneficialOwners:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+        description: "Individuals with 25% or greater ownership must be provided to Shopify Payments"
+      representatives:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+        description: "Representatives are optional but have same requirements as beneficial owners"
+        onlyForMainBusiness: true
+      additionalRequirements:
+        - shopify_payments_kyc
+        - financial_services_regulations
+
+    llc:
+      directors:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+        description: "All directors must be provided to Shopify Payments"
+      officers:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+        description: "Officers are optional but have same requirements as directors"
+      secretaries:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+        description: "Secretaries are optional but have same requirements as directors"
+      owners:
+        required: false
+        requiredInformation: []
+        description: "Owners are not automatically required for Shopify Payments"
+      beneficialOwners:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+        description: "Individuals with 25% or greater ownership must be provided to Shopify Payments"
+      representatives:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+        description: "Representatives are optional but have same requirements as beneficial owners"
+        onlyForMainBusiness: true
+      additionalRequirements:
+        - shopify_payments_kyc
+        - financial_services_regulations
+
+    partnership:
+      directors:
+        required: false
+        requiredInformation: []
+        description: "Directors are not typically required for partnerships"
+      officers:
+        required: false
+        requiredInformation: []
+        description: "Officers are not typically required for partnerships"
+      secretaries:
+        required: false
+        requiredInformation: []
+        description: "Secretaries are not typically required for partnerships"
+      owners:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+        description: "All partners must be provided to Shopify Payments"
+      beneficialOwners:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+        description: "Individuals with 25% or greater ownership must be provided to Shopify Payments"
+      representatives:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+        description: "Representatives are optional but have same requirements as beneficial owners"
+        onlyForMainBusiness: true
+      additionalRequirements:
+        - shopify_payments_kyc
+        - financial_services_regulations
+
+    individual:
+      directors:
+        required: false
+        requiredInformation: []
+        description: "Directors are not applicable for individual businesses"
+      officers:
+        required: false
+        requiredInformation: []
+        description: "Officers are not applicable for individual businesses"
+      secretaries:
+        required: false
+        requiredInformation: []
+        description: "Secretaries are not applicable for individual businesses"
+      owners:
+        required: false
+        requiredInformation: []
+        description: "Ownership reporting is not applicable for individual businesses"
+      beneficialOwners:
+        required: false
+        requiredInformation: []
+        description: "Beneficial ownership reporting is not applicable for individual businesses"
+      representatives:
+        required: false
+        requiredInformation: []
+        description: "Representatives are not applicable for individual businesses"
+      additionalRequirements:
+        - shopify_payments_kyc
+        - financial_services_regulations
+
+  # UK Requirements
+  UK:
+    corporation:
+      directors:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+          - date_of_birth
+          - nationality
+        description: "All directors must be provided to Shopify Payments"
+      officers:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+          - date_of_birth
+          - nationality
+        description: "Officers are optional but have same requirements as directors"
+      secretaries:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+          - date_of_birth
+          - nationality
+        description: "Secretaries are optional but have same requirements as directors"
+      owners:
+        required: false
+        requiredInformation: []
+        description: "Owners are not automatically required for Shopify Payments"
+      beneficialOwners:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - nationality
+        description: "Individuals with 25% or greater ownership must be provided to Shopify Payments"
+      representatives:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - nationality
+        description: "Representatives are optional but have same requirements as beneficial owners"
+        onlyForMainBusiness: true
+      additionalRequirements:
+        - shopify_payments_kyc
+        - financial_services_regulations
+        - anti_money_laundering
+
+    llc:
+      directors:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+          - date_of_birth
+          - nationality
+        description: "All directors must be provided to Shopify Payments"
+      officers:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+          - date_of_birth
+          - nationality
+        description: "Officers are optional but have same requirements as directors"
+      secretaries:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+          - date_of_birth
+          - nationality
+        description: "Secretaries are optional but have same requirements as directors"
+      owners:
+        required: false
+        requiredInformation: []
+        description: "Owners are not automatically required for Shopify Payments"
+      beneficialOwners:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - nationality
+        description: "Individuals with 25% or greater ownership must be provided to Shopify Payments"
+      representatives:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - nationality
+        description: "Representatives are optional but have same requirements as beneficial owners"
+        onlyForMainBusiness: true
+      additionalRequirements:
+        - shopify_payments_kyc
+        - financial_services_regulations
+        - anti_money_laundering
+
+  # EU Requirements
+  EU:
+    corporation:
+      directors:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+          - date_of_birth
+          - nationality
+        description: "All directors must be provided to Shopify Payments"
+      officers:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+          - date_of_birth
+          - nationality
+        description: "Officers are optional but have same requirements as directors"
+      secretaries:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+          - phone_number
+          - date_of_birth
+          - nationality
+        description: "Secretaries are optional but have same requirements as directors"
+      owners:
+        required: false
+        requiredInformation: []
+        description: "Owners are not automatically required for Shopify Payments"
+      beneficialOwners:
+        required: true
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - nationality
+        description: "Individuals with 25% or greater ownership must be provided to Shopify Payments"
+      representatives:
+        required: false
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - nationality
+        description: "Representatives are optional but have same requirements as beneficial owners"
+        onlyForMainBusiness: true
+      additionalRequirements:
+        - shopify_payments_kyc
+        - financial_services_regulations
+        - anti_money_laundering
+        - data_protection
+
+# Default Requirements (applied when no specific region/business type combination is defined)
+defaultRequirements:
+  directors:
+    required: false
+    requiredInformation:
+      - first_name
+      - last_name
+      - email_address
+      - home_address
+    description: "Default director requirements"
+  officers:
+    required: false
+    requiredInformation:
+      - first_name
+      - last_name
+      - email_address
+      - home_address
+    description: "Default officer requirements (same as directors)"
+  secretaries:
+    required: false
+    requiredInformation:
+      - first_name
+      - last_name
+      - email_address
+      - home_address
+    description: "Default secretary requirements (same as directors)"
+  owners:
+    required: false
+    requiredInformation:
+      - first_name
+      - last_name
+      - email_address
+      - home_address
+    description: "Default owner requirements"
+  beneficialOwners:
+    required: true
+    requiredInformation:
+      - first_name
+      - last_name
+      - date_of_birth
+      - email_address
+      - home_address
+      - phone_number
+    description: "Default beneficial owner requirements"
+  representatives:
+    required: false
+    requiredInformation:
+      - first_name
+      - last_name
+      - date_of_birth
+      - email_address
+      - home_address
+      - phone_number
+    description: "Default representative requirements (same as beneficial owners)"
+    onlyForMainBusiness: true
+  additionalRequirements:
+    - shopify_payments_kyc 

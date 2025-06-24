@@ -1,0 +1,248 @@
+# Global Business Types Configuration
+# This file defines all possible business types that can be used across different regions
+
+businessTypes:
+  # Corporate Structures
+  corporation:
+    name: "Corporation"
+    description: "A legal entity separate from its owners with limited liability"
+    category: "corporate"
+    characteristics:
+      - "Separate legal entity"
+      - "Limited liability"
+      - "Board of directors"
+      - "Shareholders"
+    defaultRequirements:
+      directors: true
+      owners: false
+      beneficialOwners: true
+    notes: "Standard corporate structure with directors and shareholders"
+
+  s_corporation:
+    name: "S-Corporation"
+    description: "A corporation that elects to pass corporate income through to shareholders"
+    category: "corporate"
+    characteristics:
+      - "Separate legal entity"
+      - "Limited liability"
+      - "Pass-through taxation"
+      - "Shareholder restrictions"
+    defaultRequirements:
+      directors: true
+      owners: false
+      beneficialOwners: true
+    notes: "US-specific corporate structure with pass-through taxation"
+
+  c_corporation:
+    name: "C-Corporation"
+    description: "A standard corporation with double taxation"
+    category: "corporate"
+    characteristics:
+      - "Separate legal entity"
+      - "Limited liability"
+      - "Double taxation"
+      - "No shareholder restrictions"
+    defaultRequirements:
+      directors: true
+      owners: false
+      beneficialOwners: true
+    notes: "Standard US corporation with corporate and shareholder taxation"
+
+  # Limited Liability Structures
+  llc:
+    name: "Limited Liability Company (LLC)"
+    description: "A flexible business structure combining corporate and partnership features"
+    category: "llc"
+    characteristics:
+      - "Limited liability"
+      - "Flexible management"
+      - "Pass-through taxation"
+      - "Member ownership"
+    defaultRequirements:
+      directors: false
+      owners: true
+      beneficialOwners: true
+    notes: "Flexible structure with limited liability and pass-through taxation"
+
+  single_member_llc:
+    name: "Single Member LLC"
+    description: "A limited liability company with only one owner"
+    category: "llc"
+    characteristics:
+      - "Limited liability"
+      - "Single owner"
+      - "Pass-through taxation"
+      - "Simplified management"
+    defaultRequirements:
+      directors: false
+      owners: true
+      beneficialOwners: true
+    notes: "LLC with single owner, simplified structure"
+
+  # Partnership Structures
+  partnership:
+    name: "Partnership"
+    description: "A business owned by two or more individuals"
+    category: "partnership"
+    characteristics:
+      - "Multiple owners"
+      - "Pass-through taxation"
+      - "Shared management"
+      - "Unlimited liability"
+    defaultRequirements:
+      directors: false
+      owners: true
+      beneficialOwners: true
+    notes: "Business owned by multiple partners"
+
+  limited_partnership:
+    name: "Limited Partnership"
+    description: "A partnership with both general and limited partners"
+    category: "partnership"
+    characteristics:
+      - "General and limited partners"
+      - "Limited liability for limited partners"
+      - "Pass-through taxation"
+      - "Management by general partners"
+    defaultRequirements:
+      directors: false
+      owners: true
+      beneficialOwners: true
+    notes: "Partnership with limited liability for some partners"
+
+  # Individual Structures
+  individual:
+    name: "Individual"
+    description: "An individual conducting business in their personal capacity"
+    category: "individual"
+    characteristics:
+      - "Single person"
+      - "Personal liability"
+      - "Pass-through taxation"
+      - "Simplified structure"
+    defaultRequirements:
+      directors: false
+      owners: false
+      beneficialOwners: false
+    notes: "Individual conducting business personally"
+
+  sole_proprietorship:
+    name: "Sole Proprietorship"
+    description: "A business owned and operated by one individual"
+    category: "individual"
+    characteristics:
+      - "Single owner"
+      - "Personal liability"
+      - "Pass-through taxation"
+      - "No formal structure"
+    defaultRequirements:
+      directors: false
+      owners: false
+      beneficialOwners: false
+    notes: "Simplest business structure for individuals"
+
+  # Trust Structures
+  trust:
+    name: "Trust"
+    description: "A legal arrangement where one party holds property for another"
+    category: "trust"
+    characteristics:
+      - "Trustee management"
+      - "Beneficiary ownership"
+      - "Legal separation"
+      - "Estate planning"
+    defaultRequirements:
+      directors: false
+      owners: true
+      beneficialOwners: true
+    notes: "Legal arrangement with trustee and beneficiaries"
+
+  # Cooperative Structures
+  cooperative:
+    name: "Cooperative"
+    description: "A business owned and operated by its members"
+    category: "cooperative"
+    characteristics:
+      - "Member ownership"
+      - "Democratic control"
+      - "Member benefits"
+      - "Limited liability"
+    defaultRequirements:
+      directors: true
+      owners: true
+      beneficialOwners: true
+    notes: "Member-owned business with democratic control"
+
+  # Non-Profit Structures
+  nonprofit:
+    name: "Non-Profit Organization"
+    description: "An organization that operates for charitable or educational purposes"
+    category: "nonprofit"
+    characteristics:
+      - "Tax-exempt status"
+      - "Board of directors"
+      - "No shareholders"
+      - "Public benefit"
+    defaultRequirements:
+      directors: true
+      owners: false
+      beneficialOwners: false
+    notes: "Tax-exempt organization serving public benefit"
+
+# Business Type Categories
+categories:
+  corporate:
+    name: "Corporate Structures"
+    description: "Businesses with separate legal entity status"
+    characteristics:
+      - "Limited liability"
+      - "Separate legal entity"
+      - "Formal governance"
+  
+  llc:
+    name: "Limited Liability Companies"
+    description: "Flexible business structures with limited liability"
+    characteristics:
+      - "Limited liability"
+      - "Flexible management"
+      - "Pass-through taxation"
+  
+  partnership:
+    name: "Partnership Structures"
+    description: "Businesses owned by multiple individuals"
+    characteristics:
+      - "Multiple owners"
+      - "Shared management"
+      - "Pass-through taxation"
+  
+  individual:
+    name: "Individual Structures"
+    description: "Businesses operated by individuals"
+    characteristics:
+      - "Single owner"
+      - "Personal liability"
+      - "Simplified structure"
+  
+  trust:
+    name: "Trust Structures"
+    description: "Legal arrangements with trustees and beneficiaries"
+    characteristics:
+      - "Trustee management"
+      - "Beneficiary ownership"
+      - "Legal separation"
+  
+  cooperative:
+    name: "Cooperative Structures"
+    description: "Member-owned businesses with democratic control"
+    characteristics:
+      - "Member ownership"
+      - "Democratic control"
+      - "Member benefits"
+  
+  nonprofit:
+    name: "Non-Profit Structures"
+    description: "Organizations serving public benefit"
+    characteristics:
+      - "Tax-exempt status"
+      - "Public benefit"
+      - "Board governance" 

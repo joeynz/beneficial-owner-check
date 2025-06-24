@@ -1,11 +1,28 @@
-export interface Owner {
+export type OwnerType = 'individual' | 'company' | 'trust' | 'organization';
+
+export interface BaseOwner {
   id: string;
   name: string;
-  roles: ('director' | 'shareholder')[];
+  roles: ('director' | 'owner')[];
   ownershipPercentage: number;
   isRequired: boolean;
   region: string;
+  ownerType: OwnerType;
 }
+
+export interface IndividualOwner extends BaseOwner {
+  ownerType: 'individual';
+}
+
+export interface EntityOwner extends BaseOwner {
+  ownerType: 'company' | 'trust' | 'organization';
+  entityType: string;
+  registrationNumber?: string;
+  jurisdiction?: string;
+  owners: Owner[]; // Nested owners of this entity
+}
+
+export type Owner = IndividualOwner | EntityOwner;
 
 export interface Business {
   name: string;
@@ -18,6 +35,7 @@ export interface BusinessType {
   name: string;
   description: string;
   available: boolean;
+  requirements?: RegionRequirements;
 }
 
 export interface RegionRequirements {
@@ -25,7 +43,7 @@ export interface RegionRequirements {
     required: boolean;
     description: string;
   };
-  shareholders: {
+  owners: {
     required: boolean;
     description: string;
   };
@@ -49,4 +67,10 @@ export interface BusinessStructure {
   owners: Owner[];
   totalOwnership: number;
   region: string;
+}
+
+export interface RequiredOwner {
+  owner: Owner;
+  effectiveOwnership: number;
+  reason: 'director' | 'beneficial-owner';
 } 

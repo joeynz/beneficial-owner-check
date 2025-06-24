@@ -6,37 +6,217 @@ businessTypes:
     name: Corporation
     description: A legal entity separate from its owners
     available: true
+    requirements:
+      directors:
+        required: true
+        description: All directors must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+      owners:
+        required: false
+        description: Owners are not automatically required for Shopify Payments
+        requiredInformation: []
+      beneficialOwners:
+        required: true
+        description: Individuals with 25% or greater ownership must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+        additionalRequirements: []
   - code: llc
     name: Limited Liability Company (LLC)
     description: A flexible business structure combining corporate and partnership features
     available: true
+    requirements:
+      directors:
+        required: true
+        description: All directors must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+      owners:
+        required: false
+        description: Owners are not automatically required for Shopify Payments
+        requiredInformation: []
+      beneficialOwners:
+        required: true
+        description: Individuals with 25% or greater ownership must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+      additionalRequirements:
+        - "Shopify Payments KYC compliance"
+        - "US financial services regulations"
   - code: partnership
     name: Partnership
     description: A business owned by two or more individuals
     available: true
-  - code: sole-proprietorship
-    name: Sole Proprietorship
-    description: A business owned and operated by one individual
+    requirements:
+      directors:
+        required: false
+        description: Directors are not typically required for partnerships
+        requiredInformation: []
+      owners:
+        required: true
+        description: All partners must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+      beneficialOwners:
+        required: true
+        description: Individuals with 25% or greater ownership must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+      additionalRequirements:
+        - "Shopify Payments KYC compliance"
+        - "US financial services regulations"
+  - code: single-member-llc
+    name: Single Member LLC
+    description: A limited liability company with only one owner
     available: true
+    requirements:
+      directors:
+        required: false
+        description: Directors are not typically required for single member LLCs
+        requiredInformation: []
+      owners:
+        required: true
+        description: The single owner must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+      beneficialOwners:
+        required: true
+        description: The single owner must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+      additionalRequirements:
+        - "Shopify Payments KYC compliance"
+        - "US financial services regulations"
+  - code: individual
+    name: Individual
+    description: An individual conducting business in their personal capacity
+    available: true
+    requirements:
+      directors:
+        required: false
+        description: Directors are not applicable for individual businesses
+        requiredInformation: []
+      owners:
+        required: false
+        description: Ownership reporting is not applicable for individual businesses
+        requiredInformation: []
+      beneficialOwners:
+        required: false
+        description: Beneficial ownership reporting is not applicable for individual businesses
+        requiredInformation: []
+      additionalRequirements:
+        - "Shopify Payments KYC compliance"
+        - "US financial services regulations"
   - code: s-corporation
     name: S-Corporation
     description: A corporation that elects to pass corporate income through to shareholders
     available: true
+    requirements:
+      directors:
+        required: true
+        description: All directors must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - email_address
+          - home_address
+      owners:
+        required: false
+        description: Owners are not automatically required for Shopify Payments
+        requiredInformation: []
+      beneficialOwners:
+        required: true
+        description: Individuals with 25% or greater ownership must be provided to Shopify Payments
+        requiredInformation:
+          - first_name
+          - last_name
+          - date_of_birth
+          - job_title
+          - email_address
+          - home_address
+          - phone_number
+          - ssn
+      additionalRequirements:
+        - "Shopify Payments KYC compliance"
+        - "US financial services regulations"
 requirements:
   directors:
     required: true
-    description: All directors must be reported regardless of ownership percentage
-  shareholders:
+    description: All directors must be provided to Shopify Payments
+    requiredInformation:
+      - first_name
+      - last_name
+      - email_address
+      - home_address
+  owners:
     required: false
-    description: Shareholders are not automatically required to be reported
+    description: Owners are not automatically required for Shopify Payments
+    requiredInformation: []
   beneficialOwners:
     required: true
-    description: Individuals with 25% or greater ownership must be reported as beneficial owners
+    description: Individuals with 25% or greater ownership must be provided to Shopify Payments
+    requiredInformation:
+      - first_name
+      - last_name
+      - date_of_birth
+      - job_title
+      - email_address
+      - home_address
+      - phone_number
+      - ssn
   additionalRequirements:
-    - "Corporate Transparency Act (CTA) compliance"
-    - "FinCEN reporting requirements"
-    - "State-specific requirements may apply"
+    - "Shopify Payments KYC compliance"
+    - "US financial services regulations"
 notes:
-  - "Effective January 1, 2024, most US businesses must report beneficial ownership information to FinCEN"
-  - "Exemptions apply to certain large operating companies and regulated entities"
-  - "Penalties for non-compliance can include civil and criminal penalties" 
+  - "Shopify Payments requires beneficial ownership information for US merchants"
+  - "25% ownership threshold applies to Shopify Payments compliance"
+  - "SSN is required for beneficial owners in the US"
+  - "All information is used for KYC (Know Your Customer) purposes"
+  - "Failure to provide required information may result in account restrictions"

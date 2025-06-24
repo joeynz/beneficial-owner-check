@@ -1,0 +1,284 @@
+# Global Requirements Configuration
+# This file defines all possible requirements that can be applied to different business types and regions
+
+requirements:
+  # Director Requirements
+  directors:
+    required: false
+    description: "Directors are individuals who manage and oversee the business operations"
+    requiredInformation:
+      - first_name
+      - last_name
+      - email_address
+      - home_address
+      - phone_number
+      - date_of_birth
+      - nationality
+      - job_title
+      - personal_tin
+      - aliases
+      - ssn
+    additionalRequirements: []
+    notes: "Directors are typically required for corporations and some LLCs"
+
+  # Officer Requirements (matches Directors)
+  officers:
+    required: false
+    description: "Officers are individuals who hold executive positions in the business"
+    requiredInformation:
+      - first_name
+      - last_name
+      - email_address
+      - home_address
+      - phone_number
+      - date_of_birth
+      - nationality
+      - job_title
+      - personal_tin
+      - aliases
+      - ssn
+    additionalRequirements: []
+    notes: "Officers have the same requirements as directors"
+    matchesRequirements: "directors"
+
+  # Secretary Requirements (matches Directors)
+  secretaries:
+    required: false
+    description: "Secretaries are individuals who handle administrative and compliance matters"
+    requiredInformation:
+      - first_name
+      - last_name
+      - email_address
+      - home_address
+      - phone_number
+      - date_of_birth
+      - nationality
+      - job_title
+      - personal_tin
+      - aliases
+      - ssn
+    additionalRequirements: []
+    notes: "Secretaries have the same requirements as directors"
+    matchesRequirements: "directors"
+
+  # Owner Requirements  
+  owners:
+    required: false
+    description: "Owners are individuals who have ownership interest in the business"
+    requiredInformation:
+      - first_name
+      - last_name
+      - email_address
+      - home_address
+      - phone_number
+      - date_of_birth
+      - nationality
+      - job_title
+      - personal_tin
+      - aliases
+      - ssn
+    additionalRequirements: []
+    notes: "Owners are typically required for partnerships and some LLCs"
+
+  # Beneficial Owner Requirements
+  beneficialOwners:
+    required: false
+    description: "Beneficial owners are individuals who ultimately own or control the business"
+    requiredInformation:
+      - first_name
+      - last_name
+      - email_address
+      - home_address
+      - phone_number
+      - date_of_birth
+      - nationality
+      - job_title
+      - personal_tin
+      - aliases
+      - ssn
+    additionalRequirements: []
+    notes: "Beneficial owners with ownership thresholds must be reported"
+
+  # Representative Requirements (matches Beneficial Owners)
+  representatives:
+    required: false
+    description: "Representatives are individuals who represent the business for Shopify Payments"
+    requiredInformation:
+      - first_name
+      - last_name
+      - email_address
+      - home_address
+      - phone_number
+      - date_of_birth
+      - nationality
+      - job_title
+      - personal_tin
+      - aliases
+      - ssn
+    additionalRequirements: []
+    notes: "Representatives have the same requirements as beneficial owners and can only be set for the main business"
+    matchesRequirements: "beneficialOwners"
+    onlyForMainBusiness: true
+
+# Role Definitions
+roles:
+  director:
+    name: "Director"
+    description: "Individual who manages and oversees the business operations"
+    category: "governance"
+    requirements: "directors"
+    appliesTo: ["corporation", "llc", "s_corporation", "c_corporation", "cooperative", "nonprofit"]
+    notes: "Required for most corporate structures"
+
+  officer:
+    name: "Officer"
+    description: "Individual who holds an executive position in the business"
+    category: "governance"
+    requirements: "officers"
+    appliesTo: ["corporation", "llc", "s_corporation", "c_corporation", "cooperative", "nonprofit"]
+    notes: "Executive officers with same requirements as directors"
+
+  secretary:
+    name: "Secretary"
+    description: "Individual who handles administrative and compliance matters"
+    category: "governance"
+    requirements: "secretaries"
+    appliesTo: ["corporation", "llc", "s_corporation", "c_corporation", "cooperative", "nonprofit"]
+    notes: "Administrative role with same requirements as directors"
+
+  owner:
+    name: "Owner"
+    description: "Individual who has ownership interest in the business"
+    category: "ownership"
+    requirements: "owners"
+    appliesTo: ["llc", "partnership", "limited_partnership", "single_member_llc", "trust", "cooperative"]
+    notes: "Direct ownership interest in the business"
+
+  beneficial_owner:
+    name: "Beneficial Owner"
+    description: "Individual who ultimately owns or controls the business"
+    category: "ownership"
+    requirements: "beneficialOwners"
+    appliesTo: ["all"]
+    notes: "Automatically assigned to individuals with ownership above threshold"
+    autoAssigned: true
+    thresholdBased: true
+
+  representative:
+    name: "Representative"
+    description: "Individual who represents the business for Shopify Payments"
+    category: "representation"
+    requirements: "representatives"
+    appliesTo: ["main_business_only"]
+    notes: "Can only be set for the main business registering with Shopify Payments"
+    onlyForMainBusiness: true
+
+# Role Categories
+roleCategories:
+  governance:
+    name: "Governance Roles"
+    description: "Roles related to business governance and management"
+    roles: ["director", "officer", "secretary"]
+    requirements: "directors"
+  
+  ownership:
+    name: "Ownership Roles"
+    description: "Roles related to business ownership and control"
+    roles: ["owner", "beneficial_owner"]
+    requirements: "beneficialOwners"
+  
+  representation:
+    name: "Representation Roles"
+    description: "Roles related to business representation"
+    roles: ["representative"]
+    requirements: "beneficialOwners"
+
+# Information Field Definitions
+informationFields:
+  first_name:
+    name: "First Name"
+    type: "text"
+    required: true
+    description: "Legal first name of the individual"
+  
+  last_name:
+    name: "Last Name"
+    type: "text"
+    required: true
+    description: "Legal last name of the individual"
+  
+  email_address:
+    name: "Email Address"
+    type: "email"
+    required: true
+    description: "Primary email address for communication"
+  
+  home_address:
+    name: "Home Address"
+    type: "address"
+    required: true
+    description: "Residential address of the individual"
+  
+  phone_number:
+    name: "Phone Number"
+    type: "tel"
+    required: true
+    description: "Primary contact phone number"
+  
+  date_of_birth:
+    name: "Date of Birth"
+    type: "date"
+    required: true
+    description: "Date of birth for identity verification"
+  
+  nationality:
+    name: "Nationality"
+    type: "text"
+    required: false
+    description: "Nationality or citizenship of the individual"
+  
+  job_title:
+    name: "Job Title"
+    type: "text"
+    required: false
+    description: "Professional title or position"
+  
+  personal_tin:
+    name: "Personal TIN"
+    type: "text"
+    required: false
+    description: "Personal Tax Identification Number"
+  
+  aliases:
+    name: "Aliases"
+    type: "text"
+    required: false
+    description: "Other names the individual has used"
+  
+  ssn:
+    name: "Social Security Number"
+    type: "text"
+    required: false
+    description: "Social Security Number (US only)"
+
+# Additional Requirements Definitions
+additionalRequirements:
+  shopify_payments_kyc:
+    name: "Shopify Payments KYC Compliance"
+    description: "Know Your Customer compliance requirements for Shopify Payments"
+    appliesTo: ["all"]
+  
+  financial_services_regulations:
+    name: "Financial Services Regulations"
+    description: "Local financial services and payment processing regulations"
+    appliesTo: ["all"]
+  
+  anti_money_laundering:
+    name: "Anti-Money Laundering (AML)"
+    description: "AML compliance requirements for financial services"
+    appliesTo: ["all"]
+  
+  data_protection:
+    name: "Data Protection Requirements"
+    description: "Local data protection and privacy regulations"
+    appliesTo: ["all"] 
