@@ -1,0 +1,47 @@
+code: EU
+name: European Union
+threshold: 25
+businessTypes:
+  - code: corporation
+    name: Private Limited Company
+    description: A company limited by shares with private ownership
+    available: true
+  - code: llc
+    name: Limited Liability Company
+    description: A flexible business structure with limited liability
+    available: true
+  - code: partnership
+    name: General Partnership
+    description: A business owned by two or more individuals
+    available: true
+  - code: sole-proprietorship
+    name: Sole Proprietorship
+    description: A business owned and operated by one individual
+    available: true
+  - code: public-company
+    name: Public Limited Company
+    description: A company that can offer shares to the public
+    available: true
+  - code: cooperative
+    name: Cooperative
+    description: A business owned and controlled by its members
+    available: true
+requirements:
+  directors:
+    required: true
+    description: All directors must be reported to national registries
+  shareholders:
+    required: false
+    description: Shareholders are not automatically required to be reported
+  beneficialOwners:
+    required: true
+    description: Individuals with 25% or greater ownership must be reported as beneficial owners
+  additionalRequirements:
+    - "5MLD (Fifth Money Laundering Directive) compliance"
+    - "National beneficial ownership registers"
+    - "EU-wide information sharing requirements"
+notes:
+  - "Each EU member state maintains its own beneficial ownership register"
+  - "Information is shared across EU member states"
+  - "Requirements may vary slightly between member states"
+  - "Compliance is mandatory for all EU businesses" 

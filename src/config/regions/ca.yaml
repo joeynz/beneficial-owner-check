@@ -1,0 +1,43 @@
+code: CA
+name: Canada
+threshold: 25
+businessTypes:
+  - code: corporation
+    name: Corporation
+    description: A legal entity separate from its owners
+    available: true
+  - code: llc
+    name: Limited Liability Company
+    description: A flexible business structure with limited liability
+    available: true
+  - code: partnership
+    name: Partnership
+    description: A business owned by two or more individuals
+    available: true
+  - code: sole-proprietorship
+    name: Sole Proprietorship
+    description: A business owned and operated by one individual
+    available: true
+  - code: cooperative
+    name: Cooperative
+    description: A business owned and controlled by its members
+    available: true
+requirements:
+  directors:
+    required: true
+    description: All directors must be reported to provincial/territorial registries
+  shareholders:
+    required: false
+    description: Shareholders are not automatically required to be reported
+  beneficialOwners:
+    required: true
+    description: Individuals with 25% or greater ownership must be reported as beneficial owners
+  additionalRequirements:
+    - "Provincial/territorial beneficial ownership registers"
+    - "Canada Business Corporations Act compliance"
+    - "Anti-money laundering regulations"
+notes:
+  - "Requirements vary by province/territory"
+  - "Federal corporations have additional reporting requirements"
+  - "Provinces are implementing beneficial ownership registers"
+  - "Compliance deadlines vary by jurisdiction" 

@@ -1,0 +1,47 @@
+code: AU
+name: Australia
+threshold: 25
+businessTypes:
+  - code: corporation
+    name: Proprietary Limited Company (Pty Ltd)
+    description: A private company limited by shares
+    available: true
+  - code: llc
+    name: Limited Liability Company
+    description: A flexible business structure with limited liability
+    available: true
+  - code: partnership
+    name: Partnership
+    description: A business owned by two or more individuals
+    available: true
+  - code: sole-proprietorship
+    name: Sole Trader
+    description: A business owned and operated by one individual
+    available: true
+  - code: public-company
+    name: Public Company Limited (Ltd)
+    description: A company that can offer shares to the public
+    available: true
+  - code: cooperative
+    name: Cooperative
+    description: A business owned and controlled by its members
+    available: true
+requirements:
+  directors:
+    required: true
+    description: All directors must be reported to ASIC
+  shareholders:
+    required: false
+    description: Shareholders are not automatically required to be reported
+  beneficialOwners:
+    required: true
+    description: Individuals with 25% or greater ownership must be reported as beneficial owners
+  additionalRequirements:
+    - "ASIC beneficial ownership reporting"
+    - "Anti-Money Laundering and Counter-Terrorism Financing Act"
+    - "Corporations Act 2001 compliance"
+notes:
+  - "ASIC maintains the beneficial ownership register"
+  - "Reporting requirements apply to all Australian companies"
+  - "Penalties for non-compliance can be significant"
+  - "Regular updates required when ownership changes" 

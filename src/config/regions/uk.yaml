@@ -1,0 +1,42 @@
+code: UK
+name: United Kingdom
+threshold: 25
+businessTypes:
+  - code: corporation
+    name: Private Limited Company (Ltd)
+    description: A company limited by shares with private ownership
+    available: true
+  - code: llc
+    name: Limited Liability Partnership (LLP)
+    description: A partnership with limited liability for its members
+    available: true
+  - code: partnership
+    name: General Partnership
+    description: A business owned by two or more individuals
+    available: true
+  - code: sole-proprietorship
+    name: Sole Trader
+    description: A business owned and operated by one individual
+    available: true
+  - code: plc
+    name: Public Limited Company (PLC)
+    description: A company that can offer shares to the public
+    available: true
+requirements:
+  directors:
+    required: true
+    description: All directors must be reported to Companies House
+  shareholders:
+    required: false
+    description: Shareholders are not automatically required to be reported
+  beneficialOwners:
+    required: true
+    description: Individuals with 25% or greater ownership must be reported as Persons with Significant Control (PSC)
+  additionalRequirements:
+    - "Companies House PSC register compliance"
+    - "UK Money Laundering Regulations"
+    - "5MLD (Fifth Money Laundering Directive) requirements"
+notes:
+  - "All UK companies must maintain a PSC register and report to Companies House"
+  - "PSC information must be updated within 14 days of any changes"
+  - "Failure to comply can result in criminal penalties and fines" 

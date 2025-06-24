@@ -1,0 +1,43 @@
+code: HK
+name: Hong Kong
+threshold: 25
+businessTypes:
+  - code: corporation
+    name: Private Limited Company
+    description: A private company limited by shares
+    available: true
+  - code: llc
+    name: Limited Liability Company
+    description: A flexible business structure with limited liability
+    available: true
+  - code: partnership
+    name: General Partnership
+    description: A business owned by two or more individuals
+    available: true
+  - code: sole-proprietorship
+    name: Sole Proprietorship
+    description: A business owned and operated by one individual
+    available: true
+  - code: public-company
+    name: Public Limited Company
+    description: A company that can offer shares to the public
+    available: true
+requirements:
+  directors:
+    required: true
+    description: All directors must be reported to Companies Registry
+  shareholders:
+    required: false
+    description: Shareholders are not automatically required to be reported
+  beneficialOwners:
+    required: true
+    description: Individuals with 25% or greater ownership must be reported as beneficial owners
+  additionalRequirements:
+    - "Companies Registry beneficial ownership register"
+    - "Companies Ordinance compliance"
+    - "Anti-money laundering regulations"
+notes:
+  - "Companies Registry maintains the beneficial ownership register"
+  - "All Hong Kong companies must comply with reporting requirements"
+  - "Regular updates required when ownership changes"
+  - "Penalties for non-compliance include fines and imprisonment" 

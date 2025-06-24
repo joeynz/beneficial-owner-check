@@ -1,0 +1,42 @@
+code: US
+name: United States
+threshold: 25
+businessTypes:
+  - code: corporation
+    name: Corporation
+    description: A legal entity separate from its owners
+    available: true
+  - code: llc
+    name: Limited Liability Company (LLC)
+    description: A flexible business structure combining corporate and partnership features
+    available: true
+  - code: partnership
+    name: Partnership
+    description: A business owned by two or more individuals
+    available: true
+  - code: sole-proprietorship
+    name: Sole Proprietorship
+    description: A business owned and operated by one individual
+    available: true
+  - code: s-corporation
+    name: S-Corporation
+    description: A corporation that elects to pass corporate income through to shareholders
+    available: true
+requirements:
+  directors:
+    required: true
+    description: All directors must be reported regardless of ownership percentage
+  shareholders:
+    required: false
+    description: Shareholders are not automatically required to be reported
+  beneficialOwners:
+    required: true
+    description: Individuals with 25% or greater ownership must be reported as beneficial owners
+  additionalRequirements:
+    - "Corporate Transparency Act (CTA) compliance"
+    - "FinCEN reporting requirements"
+    - "State-specific requirements may apply"
+notes:
+  - "Effective January 1, 2024, most US businesses must report beneficial ownership information to FinCEN"
+  - "Exemptions apply to certain large operating companies and regulated entities"
+  - "Penalties for non-compliance can include civil and criminal penalties" 

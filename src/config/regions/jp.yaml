@@ -1,0 +1,43 @@
+code: JP
+name: Japan
+threshold: 25
+businessTypes:
+  - code: corporation
+    name: Kabushiki Kaisha (KK)
+    description: A joint-stock corporation
+    available: true
+  - code: llc
+    name: Godo Kaisha (GK)
+    description: A limited liability company
+    available: true
+  - code: partnership
+    name: Kumiai
+    description: A general partnership
+    available: true
+  - code: sole-proprietorship
+    name: Kojo
+    description: A sole proprietorship
+    available: true
+  - code: public-company
+    name: Public KK
+    description: A public joint-stock corporation
+    available: true
+requirements:
+  directors:
+    required: true
+    description: All directors must be reported to Legal Affairs Bureau
+  shareholders:
+    required: false
+    description: Shareholders are not automatically required to be reported
+  beneficialOwners:
+    required: true
+    description: Individuals with 25% or greater ownership must be reported as beneficial owners
+  additionalRequirements:
+    - "Legal Affairs Bureau beneficial ownership register"
+    - "Companies Act compliance"
+    - "Anti-money laundering regulations"
+notes:
+  - "Legal Affairs Bureau maintains the beneficial ownership register"
+  - "All Japanese companies must comply with reporting requirements"
+  - "Regular updates required when ownership changes"
+  - "Penalties for non-compliance include fines and imprisonment" 
