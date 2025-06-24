@@ -1,5 +1,3 @@
-import yaml from 'js-yaml';
-
 // Configuration interfaces
 export interface InformationField {
   name: string;
@@ -61,6 +59,7 @@ export interface Region {
   availableBusinessTypes: string[];
   additionalRequirements: string[];
   notes: string;
+  roleMappings?: Record<string, string[]>;
 }
 
 export interface RegionBusinessTypeMapping {
@@ -115,21 +114,73 @@ export async function loadConfiguration(): Promise<Configuration> {
   }
 
   try {
-    // Load individual configuration files
-    const requirementsResponse = await fetch('/src/config/requirements.yaml');
-    const businessTypesResponse = await fetch('/src/config/business-types.yaml');
-    const regionsResponse = await fetch('/src/config/regions.yaml');
-    const relationshipsResponse = await fetch('/src/config/relationships.yaml');
+    // Load global configuration files via API
+    const requirementsResponse = await fetch('http://localhost:3001/api/requirements');
+    const businessTypesResponse = await fetch('http://localhost:3001/api/business-types');
+    const relationshipsResponse = await fetch('http://localhost:3001/api/relationships');
 
-    const requirementsText = await requirementsResponse.text();
-    const businessTypesText = await businessTypesResponse.text();
-    const regionsText = await regionsResponse.text();
-    const relationshipsText = await relationshipsResponse.text();
+    if (!requirementsResponse.ok || !businessTypesResponse.ok || !relationshipsResponse.ok) {
+      throw new Error('Failed to load configuration from API');
+    }
 
-    const requirements = yaml.load(requirementsText) as any;
-    const businessTypes = yaml.load(businessTypesText) as any;
-    const regions = yaml.load(regionsText) as any;
-    const relationships = yaml.load(relationshipsText) as any;
+    const requirementsData = await requirementsResponse.json();
+    const businessTypesData = await businessTypesResponse.json();
+    const relationshipsData = await relationshipsResponse.json();
+
+    if (!requirementsData.success || !businessTypesData.success || !relationshipsData.success) {
+      throw new Error('API returned error response');
+    }
+
+    const requirements = requirementsData.requirements;
+    const businessTypes = businessTypesData.businessTypes;
+    const relationships = relationshipsData.relationships;
+
+    // Create regions from the relationships data
+    const regions: Record<string, Region> = {};
+    const regionBusinessTypes: Record<string, RegionBusinessTypeMapping> = {};
+    const businessTypeRequirements: Record<string, Record<string, BusinessTypeRequirement>> = {};
+
+    // Get all region codes from the relationships data
+    const regionCodes = Object.keys(relationships.regionBusinessTypes);
+    
+    for (const regionCode of regionCodes) {
+      const regionMapping = relationships.regionBusinessTypes[regionCode];
+      
+      // Create region metadata
+      regions[regionCode] = {
+        name: getRegionName(regionCode),
+        code: regionCode,
+        continent: getContinentFromRegion(regionCode),
+        currency: getCurrencyFromRegion(regionCode),
+        threshold: regionMapping.defaultThreshold,
+        description: getRegionName(regionCode),
+        characteristics: getCharacteristicsFromRegion(regionCode),
+        availableBusinessTypes: regionMapping.availableTypes,
+        additionalRequirements: getAdditionalRequirementsFromRegion(regionCode),
+        notes: regionMapping.notes || getNotesFromRegion(regionCode)
+      };
+
+      // Create region-business type mapping
+      regionBusinessTypes[regionCode] = {
+        availableTypes: regionMapping.availableTypes,
+        defaultThreshold: regionMapping.defaultThreshold,
+        notes: regionMapping.notes || getNotesFromRegion(regionCode)
+      };
+
+      // Create business type requirements mapping
+      businessTypeRequirements[regionCode] = {};
+      
+      for (const businessTypeCode of regionMapping.availableTypes) {
+        const specificRequirements = relationships.businessTypeRequirements[regionCode]?.[businessTypeCode];
+        
+        if (specificRequirements) {
+          businessTypeRequirements[regionCode][businessTypeCode] = specificRequirements;
+        } else {
+          // Use default requirements
+          businessTypeRequirements[regionCode][businessTypeCode] = relationships.defaultRequirements;
+        }
+      }
+    }
 
     // Merge configurations
     const config: Configuration = {
@@ -139,18 +190,103 @@ export async function loadConfiguration(): Promise<Configuration> {
       informationFields: requirements.informationFields,
       additionalRequirements: requirements.additionalRequirements,
       businessTypes: businessTypes.businessTypes,
-      regions: regions.regions,
+      regions,
       regionBusinessTypes: relationships.regionBusinessTypes,
       businessTypeRequirements: relationships.businessTypeRequirements,
-      defaultRequirements: relationships.defaultRequirements,
+      defaultRequirements: relationships.defaultRequirements
     };
 
     configCache = config;
     return config;
   } catch (error) {
-    console.error('Failed to load configuration:', error);
-    throw new Error('Failed to load configuration files');
+    console.error('Error loading configuration:', error);
+    throw new Error('Failed to load configuration');
   }
+}
+
+// Helper functions
+function getRegionName(regionCode: string): string {
+  const regionNames: Record<string, string> = {
+    'US': 'United States',
+    'UK': 'United Kingdom',
+    'CA': 'Canada',
+    'AU': 'Australia',
+    'EU': 'European Union',
+    'HK': 'Hong Kong',
+    'JP': 'Japan',
+    'SG': 'Singapore'
+  };
+  return regionNames[regionCode] || regionCode;
+}
+
+function getContinentFromRegion(regionCode: string): string {
+  const continentMap: Record<string, string> = {
+    'US': 'North America',
+    'CA': 'North America',
+    'UK': 'Europe',
+    'EU': 'Europe',
+    'AU': 'Oceania',
+    'HK': 'Asia',
+    'JP': 'Asia',
+    'SG': 'Asia'
+  };
+  return continentMap[regionCode] || 'Unknown';
+}
+
+function getCurrencyFromRegion(regionCode: string): string {
+  const currencyMap: Record<string, string> = {
+    'US': 'USD',
+    'CA': 'CAD',
+    'UK': 'GBP',
+    'EU': 'EUR',
+    'AU': 'AUD',
+    'HK': 'HKD',
+    'JP': 'JPY',
+    'SG': 'SGD'
+  };
+  return currencyMap[regionCode] || 'USD';
+}
+
+function getCharacteristicsFromRegion(regionCode: string): string[] {
+  const characteristicsMap: Record<string, string[]> = {
+    'US': ['Common law', 'Federal system', 'Strong financial regulations'],
+    'UK': ['Common law', 'Parliamentary system', 'Financial services hub'],
+    'EU': ['Civil law', 'Supranational union', 'Harmonized regulations'],
+    'CA': ['Common law', 'Parliamentary system', 'Strong banking sector'],
+    'AU': ['Common law', 'Parliamentary system', 'Pacific region hub'],
+    'HK': ['Common law', 'Special administrative region', 'Financial center'],
+    'JP': ['Civil law', 'Constitutional monarchy', 'Advanced economy'],
+    'SG': ['Common law', 'Parliamentary republic', 'Financial hub']
+  };
+  return characteristicsMap[regionCode] || ['Standard business environment'];
+}
+
+function getAdditionalRequirementsFromRegion(regionCode: string): string[] {
+  const requirementsMap: Record<string, string[]> = {
+    'US': ['shopify_payments_kyc', 'financial_services_regulations'],
+    'UK': ['shopify_payments_kyc', 'financial_services_regulations', 'anti_money_laundering'],
+    'EU': ['shopify_payments_kyc', 'financial_services_regulations', 'anti_money_laundering', 'data_protection'],
+    'CA': ['shopify_payments_kyc', 'financial_services_regulations'],
+    'AU': ['shopify_payments_kyc', 'financial_services_regulations'],
+    'HK': ['shopify_payments_kyc', 'financial_services_regulations'],
+    'JP': ['shopify_payments_kyc', 'financial_services_regulations'],
+    'SG': ['shopify_payments_kyc', 'financial_services_regulations']
+  };
+  return requirementsMap[regionCode] || ['shopify_payments_kyc'];
+}
+
+function getNotesFromRegion(regionCode: string): string {
+  const notesMap: Record<string, string> = {
+    'US': 'US has the most comprehensive set of business types available',
+    'UK': 'UK has common law business structures',
+    'EU': 'EU has civil law business structures',
+    'CA': 'Canada has similar business types to US but fewer variations',
+    'AU': 'Australia has common law business structures',
+    'HK': 'Hong Kong has common law business structures',
+    'JP': 'Japan has civil law business structures',
+    'SG': 'Singapore has comprehensive business structures'
+  };
+  return notesMap[regionCode] || 'Standard business environment';
 }
 
 /**
@@ -357,4 +493,4 @@ export async function getOwnershipThreshold(regionCode: string): Promise<number>
  */
 export function clearConfigurationCache(): void {
   configCache = null;
-} 
+}

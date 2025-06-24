@@ -151,7 +151,6 @@ businessTypeRequirements:
           - email_address
           - home_address
           - phone_number
-          - ssn
         description: "Individuals with 25% or greater ownership must be provided to Shopify Payments"
       representatives:
         required: false
@@ -163,7 +162,6 @@ businessTypeRequirements:
           - email_address
           - home_address
           - phone_number
-          - ssn
         description: "Representatives are optional but have same requirements as beneficial owners"
         onlyForMainBusiness: true
       additionalRequirements:
@@ -212,7 +210,6 @@ businessTypeRequirements:
           - email_address
           - home_address
           - phone_number
-          - ssn
         description: "Individuals with 25% or greater ownership must be provided to Shopify Payments"
       representatives:
         required: false
@@ -224,7 +221,6 @@ businessTypeRequirements:
           - email_address
           - home_address
           - phone_number
-          - ssn
         description: "Representatives are optional but have same requirements as beneficial owners"
         onlyForMainBusiness: true
       additionalRequirements:
@@ -273,7 +269,6 @@ businessTypeRequirements:
           - email_address
           - home_address
           - phone_number
-          - ssn
         description: "Individuals with 25% or greater ownership must be provided to Shopify Payments"
       representatives:
         required: false
@@ -285,7 +280,6 @@ businessTypeRequirements:
           - email_address
           - home_address
           - phone_number
-          - ssn
         description: "Representatives are optional but have same requirements as beneficial owners"
         onlyForMainBusiness: true
       additionalRequirements:
@@ -326,7 +320,6 @@ businessTypeRequirements:
           - email_address
           - home_address
           - phone_number
-          - ssn
         description: "Individuals with 25% or greater ownership must be provided to Shopify Payments"
       representatives:
         required: false
@@ -338,7 +331,6 @@ businessTypeRequirements:
           - email_address
           - home_address
           - phone_number
-          - ssn
         description: "Representatives are optional but have same requirements as beneficial owners"
         onlyForMainBusiness: true
       additionalRequirements:

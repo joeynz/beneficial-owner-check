@@ -17,7 +17,6 @@ requirements:
       - job_title
       - personal_tin
       - aliases
-      - ssn
     additionalRequirements: []
     notes: "Directors are typically required for corporations and some LLCs"
 
@@ -36,7 +35,6 @@ requirements:
       - job_title
       - personal_tin
       - aliases
-      - ssn
     additionalRequirements: []
     notes: "Officers have the same requirements as directors"
     matchesRequirements: "directors"
@@ -56,7 +54,6 @@ requirements:
       - job_title
       - personal_tin
       - aliases
-      - ssn
     additionalRequirements: []
     notes: "Secretaries have the same requirements as directors"
     matchesRequirements: "directors"
@@ -76,7 +73,6 @@ requirements:
       - job_title
       - personal_tin
       - aliases
-      - ssn
     additionalRequirements: []
     notes: "Owners are typically required for partnerships and some LLCs"
 
@@ -95,7 +91,6 @@ requirements:
       - job_title
       - personal_tin
       - aliases
-      - ssn
     additionalRequirements: []
     notes: "Beneficial owners with ownership thresholds must be reported"
 
@@ -114,7 +109,6 @@ requirements:
       - job_title
       - personal_tin
       - aliases
-      - ssn
     additionalRequirements: []
     notes: "Representatives have the same requirements as beneficial owners and can only be set for the main business"
     matchesRequirements: "beneficialOwners"
@@ -164,6 +158,14 @@ roles:
     autoAssigned: true
     thresholdBased: true
 
+  partner:
+    name: "Partner"
+    description: "Individual who is a partner in a partnership business"
+    category: "ownership"
+    requirements: "beneficialOwners"
+    appliesTo: ["partnership", "limited_partnership"]
+    notes: "Partners have the same requirements as beneficial owners"
+
   representative:
     name: "Representative"
     description: "Individual who represents the business for Shopify Payments"
@@ -184,7 +186,7 @@ roleCategories:
   ownership:
     name: "Ownership Roles"
     description: "Roles related to business ownership and control"
-    roles: ["owner", "beneficial_owner"]
+    roles: ["owner", "beneficial_owner", "partner"]
     requirements: "beneficialOwners"
   
   representation:
@@ -254,12 +256,6 @@ informationFields:
     type: "text"
     required: false
     description: "Other names the individual has used"
-  
-  ssn:
-    name: "Social Security Number"
-    type: "text"
-    required: false
-    description: "Social Security Number (US only)"
 
 # Additional Requirements Definitions
 additionalRequirements:

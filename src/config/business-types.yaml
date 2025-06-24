@@ -16,6 +16,7 @@ businessTypes:
       directors: true
       owners: false
       beneficialOwners: true
+      representatives: true
     notes: "Standard corporate structure with directors and shareholders"
 
   s_corporation:
@@ -31,6 +32,7 @@ businessTypes:
       directors: true
       owners: false
       beneficialOwners: true
+      representatives: true
     notes: "US-specific corporate structure with pass-through taxation"
 
   c_corporation:
@@ -46,7 +48,64 @@ businessTypes:
       directors: true
       owners: false
       beneficialOwners: true
+      representatives: true
     notes: "Standard US corporation with corporate and shareholder taxation"
+
+  private_company:
+    name: "Private Company"
+    description: "A privately held company with limited shareholders and no public trading"
+    category: "corporate"
+    characteristics:
+      - "Separate legal entity"
+      - "Limited liability"
+      - "Private ownership"
+      - "No public trading"
+      - "Board of directors"
+      - "Shareholders"
+    defaultRequirements:
+      directors: true
+      owners: false
+      beneficialOwners: true
+      representatives: true
+    notes: "Privately held corporation with limited shareholders"
+
+  public_company:
+    name: "Public Company"
+    description: "A company that can offer shares to the public but may not be actively traded"
+    category: "corporate"
+    characteristics:
+      - "Separate legal entity"
+      - "Limited liability"
+      - "Public share offering"
+      - "Board of directors"
+      - "Shareholders"
+      - "Regulatory compliance"
+    defaultRequirements:
+      directors: true
+      owners: false
+      beneficialOwners: true
+      representatives: true
+    notes: "Publicly registered company with potential for public trading"
+
+  publicly_traded_company:
+    name: "Publicly Traded Company"
+    description: "A company whose shares are actively traded on a public stock exchange"
+    category: "corporate"
+    characteristics:
+      - "Separate legal entity"
+      - "Limited liability"
+      - "Publicly traded shares"
+      - "Stock exchange listing"
+      - "Board of directors"
+      - "Shareholders"
+      - "High regulatory compliance"
+      - "Public disclosure requirements"
+    defaultRequirements:
+      directors: false
+      owners: false
+      beneficialOwners: false
+      representatives: true
+    notes: "Company listed on a public stock exchange with active trading"
 
   # Limited Liability Structures
   llc:
@@ -62,6 +121,7 @@ businessTypes:
       directors: false
       owners: true
       beneficialOwners: true
+      representatives: true
     notes: "Flexible structure with limited liability and pass-through taxation"
 
   single_member_llc:
@@ -77,6 +137,7 @@ businessTypes:
       directors: false
       owners: true
       beneficialOwners: true
+      representatives: true
     notes: "LLC with single owner, simplified structure"
 
   # Partnership Structures
@@ -93,6 +154,7 @@ businessTypes:
       directors: false
       owners: true
       beneficialOwners: true
+      representatives: true
     notes: "Business owned by multiple partners"
 
   limited_partnership:
@@ -108,6 +170,7 @@ businessTypes:
       directors: false
       owners: true
       beneficialOwners: true
+      representatives: true
     notes: "Partnership with limited liability for some partners"
 
   # Individual Structures
@@ -124,12 +187,13 @@ businessTypes:
       directors: false
       owners: false
       beneficialOwners: false
+      representatives: true
     notes: "Individual conducting business personally"
 
   sole_proprietorship:
     name: "Sole Proprietorship"
     description: "A business owned and operated by one individual"
-    category: "individual"
+    category: "llc"
     characteristics:
       - "Single owner"
       - "Personal liability"
@@ -139,6 +203,7 @@ businessTypes:
       directors: false
       owners: false
       beneficialOwners: false
+      representatives: true
     notes: "Simplest business structure for individuals"
 
   # Trust Structures
@@ -155,6 +220,7 @@ businessTypes:
       directors: false
       owners: true
       beneficialOwners: true
+      representatives: true
     notes: "Legal arrangement with trustee and beneficiaries"
 
   # Cooperative Structures
@@ -171,6 +237,7 @@ businessTypes:
       directors: true
       owners: true
       beneficialOwners: true
+      representatives: true
     notes: "Member-owned business with democratic control"
 
   # Non-Profit Structures
@@ -187,7 +254,26 @@ businessTypes:
       directors: true
       owners: false
       beneficialOwners: false
+      representatives: true
     notes: "Tax-exempt organization serving public benefit"
+
+  registered_charity:
+    name: "Registered Charity"
+    description: "A legally registered charitable organization with tax-exempt status"
+    category: "nonprofit"
+    characteristics:
+      - "Tax-exempt status"
+      - "Registered with government"
+      - "Charitable purpose"
+      - "Board of directors"
+      - "No shareholders"
+      - "Public benefit"
+    defaultRequirements:
+      directors: true
+      owners: false
+      beneficialOwners: false
+      representatives: true
+    notes: "Registered charity with legal and tax-exempt status"
 
 # Business Type Categories
 categories:

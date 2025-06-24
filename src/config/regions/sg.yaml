@@ -1,43 +1,21 @@
-code: SG
 name: Singapore
+code: SG
+continent: Asia
+currency: SGD
 threshold: 25
-businessTypes:
-  - code: corporation
-    name: Private Limited Company (Pte Ltd)
-    description: A private company limited by shares
-    available: true
-  - code: llc
-    name: Limited Liability Partnership (LLP)
-    description: A partnership with limited liability for its partners
-    available: true
-  - code: partnership
-    name: General Partnership
-    description: A business owned by two or more individuals
-    available: true
-  - code: sole-proprietorship
-    name: Sole Proprietorship
-    description: A business owned and operated by one individual
-    available: true
-  - code: public-company
-    name: Public Company Limited (Ltd)
-    description: A company that can offer shares to the public
-    available: true
-requirements:
-  directors:
-    required: true
-    description: All directors must be reported to ACRA
-  shareholders:
-    required: false
-    description: Shareholders are not automatically required to be reported
-  beneficialOwners:
-    required: true
-    description: Individuals with 25% or greater ownership must be reported as beneficial owners
-  additionalRequirements:
-    - "ACRA beneficial ownership register"
-    - "Companies Act compliance"
-    - "Anti-money laundering regulations"
-notes:
-  - "ACRA maintains the beneficial ownership register"
-  - "All Singapore companies must comply with reporting requirements"
-  - "Regular updates required when ownership changes"
-  - "Penalties for non-compliance include fines and imprisonment" 
+description: Singapore
+characteristics:
+  - Common law
+  - Parliamentary republic
+  - Financial hub
+availableBusinessTypes:
+  - partnership
+  - individual
+  - nonprofit
+  - public_company
+  - private_company
+  - sole_proprietorship
+additionalRequirements:
+  - shopify_payments_kyc
+  - financial_services_regulations
+notes: Singapore has comprehensive business structures

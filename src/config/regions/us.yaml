@@ -30,7 +30,6 @@ businessTypes:
           - email_address
           - home_address
           - phone_number
-          - ssn
         additionalRequirements: []
   - code: llc
     name: Limited Liability Company (LLC)
@@ -60,10 +59,9 @@ businessTypes:
           - email_address
           - home_address
           - phone_number
-          - ssn
-      additionalRequirements:
-        - "Shopify Payments KYC compliance"
-        - "US financial services regulations"
+        additionalRequirements:
+          - "Shopify Payments KYC compliance"
+          - "US financial services regulations"
   - code: partnership
     name: Partnership
     description: A business owned by two or more individuals
@@ -95,10 +93,9 @@ businessTypes:
           - email_address
           - home_address
           - phone_number
-          - ssn
-      additionalRequirements:
-        - "Shopify Payments KYC compliance"
-        - "US financial services regulations"
+        additionalRequirements:
+          - "Shopify Payments KYC compliance"
+          - "US financial services regulations"
   - code: single-member-llc
     name: Single Member LLC
     description: A limited liability company with only one owner
@@ -130,10 +127,9 @@ businessTypes:
           - email_address
           - home_address
           - phone_number
-          - ssn
-      additionalRequirements:
-        - "Shopify Payments KYC compliance"
-        - "US financial services regulations"
+        additionalRequirements:
+          - "Shopify Payments KYC compliance"
+          - "US financial services regulations"
   - code: individual
     name: Individual
     description: An individual conducting business in their personal capacity
@@ -182,10 +178,9 @@ businessTypes:
           - email_address
           - home_address
           - phone_number
-          - ssn
-      additionalRequirements:
-        - "Shopify Payments KYC compliance"
-        - "US financial services regulations"
+        additionalRequirements:
+          - "Shopify Payments KYC compliance"
+          - "US financial services regulations"
 requirements:
   directors:
     required: true
@@ -210,13 +205,11 @@ requirements:
       - email_address
       - home_address
       - phone_number
-      - ssn
   additionalRequirements:
     - "Shopify Payments KYC compliance"
     - "US financial services regulations"
 notes:
   - "Shopify Payments requires beneficial ownership information for US merchants"
   - "25% ownership threshold applies to Shopify Payments compliance"
-  - "SSN is required for beneficial owners in the US"
   - "All information is used for KYC (Know Your Customer) purposes"
   - "Failure to provide required information may result in account restrictions"
